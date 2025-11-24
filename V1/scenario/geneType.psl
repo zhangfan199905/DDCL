@@ -1,0 +1,6 @@
+$env:SUMO_HOME = "D:\SUMO"
+$env:PYTHONPATH = "$env:SUMO_HOME/tools"
+rm vTypeDistributions.add.xml
+python $env:SUMO_HOME/tools/createVehTypeDistribution.py veh_config/cav.config.txt --size 1000 --name "cav"
+python $env:SUMO_HOME/tools/createVehTypeDistribution.py veh_config/hv.config.txt --size 1000 --name "hv"
+(Get-Content -Path vTypeDistributions.add.xml) -replace '\.000', '' | Set-Content -Path vTypeDistributions.add.xml
