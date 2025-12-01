@@ -19,7 +19,7 @@ except ImportError:
 _LC_DIR_LEFT = 1
 _LC_DIR_RIGHT = -1
 _SUMO_DEFAULT_LC_MODE = 0b011001010101  
-_TRACI_LC_MODE = 0b000000000000            
+_TRACI_LC_MODE = 0b000100000000 #0b000000000000            
 _TRACI_FORCED_LC_MODE = 256   
 _TTC_HML_FLEXIBLE_THRESHOLD = 2.5 
 
@@ -112,35 +112,37 @@ class VehicleController:
     def update_vehicle_states(self, hml_lanes: Set[str], cdl_lanes: Set[str], cdl_start_edge: Optional[str], control_mode: int = MODE_CUSTOM):
         self._handle_subscriptions()
         self.all_veh_data = traci.vehicle.getSubscriptionResults(None)
-        
+
         dcdl_lanes_combined = hml_lanes.union(cdl_lanes)
         current_dcdl_veh_ids = {
-            veh_id for veh_id, data in self.all_veh_data.items() 
+            veh_id for veh_id, data in self.all_veh_data.items()
             if data and data.get(tc.VAR_LANE_ID) in dcdl_lanes_combined
         }
 
         # 1. 恢复 LC2013
-        released_vehicles = self.controlled_veh_ids - current_dcdl_veh_ids
+        previously_controlled = set(self.controlled_veh_ids)
+        released_vehicles = previously_controlled - current_dcdl_veh_ids
         for veh_id in released_vehicles:
-            if veh_id in self.all_veh_data: 
+            if veh_id in self.all_veh_data:
                 traci.vehicle.setLaneChangeMode(veh_id, _SUMO_DEFAULT_LC_MODE)
-        
-        self.controlled_veh_ids = current_dcdl_veh_ids
 
         # 2. 模式检查
         if control_mode != MODE_CUSTOM:
             for veh_id in current_dcdl_veh_ids:
                 traci.vehicle.setLaneChangeMode(veh_id, _SUMO_DEFAULT_LC_MODE)
+            self.controlled_veh_ids = current_dcdl_veh_ids
             return
 
         # 3. 禁用自主换道
-        newly_controlled = current_dcdl_veh_ids - self.controlled_veh_ids
+        newly_controlled = current_dcdl_veh_ids - previously_controlled
         for veh_id in newly_controlled:
             traci.vehicle.setLaneChangeMode(veh_id, _TRACI_LC_MODE)
-        
+
+        self.controlled_veh_ids = current_dcdl_veh_ids
+
         # 4. 执行决策
         for veh_id in self.controlled_veh_ids:
-            veh_data = self.all_veh_data[veh_id] 
+            veh_data = self.all_veh_data[veh_id]
             self.manage_dcdl_lane_changing(veh_id, veh_data, hml_lanes, cdl_lanes, cdl_start_edge)
     
     def manage_dcdl_lane_changing(self, veh_id: str, veh_data: Dict, hml_lanes: Set[str], cdl_lanes: Set[str], cdl_start_edge: Optional[str]):
