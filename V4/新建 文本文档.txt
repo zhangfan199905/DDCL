@@ -1,0 +1,47 @@
+DCDL_GMARL_Project/
+│
+├── scenario/
+│   ├── net.net.xml               # 【已有】路网文件
+│   ├── routes.rou.xml            # 【已有】流量文件
+│   ├── vehicles.add.xml          # 【已有】vTypeDistributions.add.xml
+│   ├── det.add.xml               # 【已有】基于车道段  的检测器
+│   ├── simulation.sumocfg        # 【已有】test.sumocfg
+│   └── view.view.xml             # 【已有】viewsettings.xml
+│
+├── controller/
+│   ├── __init__.py
+│   ├── config.py                 # 【已创建】(V4 精简版) [cite: 1-6, 7-566]
+│   ├── main.py                   # 【已创建】(项目主入口，负责启动和连接所有模块，测试换道框架的优越性，没有GMARL)
+│   │
+│   ├── controllers/
+│   │   ├── __init__.py
+│   │   ├── lane_manager.py       # 【已创建】(V1) 宏观控制器 (HML/CDL/HCL [cite: 181-261, 253-259])
+│   │   └── vehicle_controller.py   # 【已创建】(V6) 微观控制器 (换道框架 /安全代理)
+│   │
+│   └── environment/
+│       ├── __init__.py
+│       ├── dcdl_env.py           # 【已创建】(RL环境封装：step, reset)
+│       ├── reward_calculator.py  # 【已创建】(V2) GMARL奖励函数 
+│       └── 2d_ttc_calculator.py    # 【已创建】(V1) 论文 [cite: 7-566] 2D-TTC  的精确实现
+│
+├── gmarl/
+│   ├── __init__.py
+│   ├── train.py                  # 【待创建】(GMARL 训练脚本, 导入 dcdl_env)
+│   ├── replay_buffer.py          # 【待创建】(经验回放池)
+│   ├── networks.py               # 【待创建】(Actor, Critic, DQN [cite: 499-548] 等基础网络)
+│   │
+│   ├── gat_module/
+│   │   ├── __init__.py
+│   │   └── model.py              # 【待创建】(GAT [cite: 451-492] 网络结构)
+│   │
+│   └── algorithms/
+│       ├── __init__.py
+│       ├── qmix.py               # 【待创建】(QMIX 算法实现 [cite: 499-526])
+│       └── maddpg.py             # 【待创建】(MADDPG 算法实现 [cite: 527-548])
+│
+├── analysis/
+│   ├── outputs/                  # (用于存放 .xml 和 .fcd 输出)
+│   └── plot_results.ipynb        # (用于数据可视化和绘图)
+│   └──run_comparison.ipynb        # (用于比较各控制模式)
+│
+└── README.md

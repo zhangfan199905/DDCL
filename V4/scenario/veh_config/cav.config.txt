@@ -1,0 +1,18 @@
+tau; 0.6
+tauCACCToACC; normal(1.5,0.2); [1.1,2.0]
+length; 5.0
+width; 1.8
+accel; 2.5
+decel; 4.0
+emergencyDecel; 9.0
+vClass; custom2
+carFollowModel; CACC
+laneChangeModel; LC2013
+lcAssertive; normal(0.85,0.02); [0.8,0.9]
+lcLookaheadLeft; 0
+lcSpeedGain; 0
+lcStrategic; 0
+lcCooperative; -1
+lcKeepRight; 0
+lcPushy; 0
+actionStepLength; 0.1
