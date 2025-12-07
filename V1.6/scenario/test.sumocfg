@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- SUMO Configuration for DDCL Simulation
+     Dynamic CAV Dedicated Lane (DDCL) Management System
+     
+     Simulation Parameters:
+     - Total time: 2100 seconds
+     - Time step: 0.1 seconds
+     - Freeway: 4km, 3 lanes with bottleneck
+     - Control area: 2000m (10 segments)
+-->
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="net.net.xml"/>
+        <route-files value="rou.rou.xml"/>
+        <additional-files value="vTypeDistributions.add.xml,det.add.xml"/>
+    </input>
+
+    <output>
+        <fcd-output value="fcdTrajectories.xml"/>
+        <fcd-output.acceleration value="true"/>
+        <lanechange-output value="lanechanges.xml"/>
+        <lanechange-output.xy value="true"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="2100"/>
+        <step-length value="0.1"/>
+    </time>
+
+    <processing>
+        <collision.action value="none"/>
+        <collision.stoptime value="1000"/>
+        <collision.mingap-factor value="1"/>
+        <time-to-teleport value="-1"/>
+        <max-depart-delay value="900"/>
+        <routing-algorithm value="dijkstra"/>
+        <lateral-resolution value="0.8"/>
+    </processing>
+
+    <report>
+        <xml-validation value="never"/>
+        <no-warnings value="true"/>
+        <no-step-log value="true"/>
+        <verbose value="false"/>
+    </report>
+
+    <fcd_device>
+        <device.fcd.period value="1.0"/>
+    </fcd_device>
+
+    <traci_server>
+        <remote-port value="8813"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="9497"/>
+    </random_number>
+
+    <gui_only>
+        <gui-settings-file value="viewsettings.xml"/>
+        <start value="true"/>
+        <quit-on-end value="true"/>
+    </gui_only>
+
+</configuration>

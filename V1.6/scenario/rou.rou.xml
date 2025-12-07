@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Route file for DDCL Simulation
+     Total vehicles: 1500 (1000 HV + 500 CAV)
+     Flow rate adjusted to generate vehicles over 2100 seconds simulation
+     
+     Flow calculation:
+     - Simulation time: 2100s (35 minutes)
+     - Target vehicles: 1500
+     - Flow rate: ~1500/2100*3600 = ~2571 veh/hour = ~42.86 veh/minute
+     
+     Using Poisson distribution for realistic arrival patterns
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+    <!-- Route definition: straight through highway -->
+    <route id="highway_route" edges="1 2 3 4 5 6 7 8 9 10 11 12 13"/>
+
+    <!-- Vehicle flows using mixed traffic distribution -->
+    <!-- Flow 1: Main traffic flow at designed capacity -->
+    <flow id="flow_main" type="mixedTraffic" route="highway_route" 
+          begin="0" end="1800" 
+          vehsPerHour="2600" 
+          departLane="best" 
+          departSpeed="max" 
+          departPos="base"/>
+
+    <!-- Flow 2: Additional burst at peak period -->
+    <flow id="flow_peak" type="mixedTraffic" route="highway_route" 
+          begin="600" end="1200" 
+          vehsPerHour="1000" 
+          departLane="best" 
+          departSpeed="max" 
+          departPos="base"/>
+
+</routes>

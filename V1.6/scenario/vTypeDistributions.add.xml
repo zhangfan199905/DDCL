@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Vehicle Type Distributions for DDCL Simulation
+     This file defines two vehicle types:
+     1. HV (Human Vehicle): custom1 vClass
+     2. CAV (Connected Autonomous Vehicle): custom2 vClass
+     
+     Parameters based on config.py:
+     - Vehicle length: 5.0m
+     - Vehicle width: 1.8m
+     - Design speed: 120 km/h (33.33 m/s)
+     - HV brake reaction time: 1.21s
+     - CAV delay time: 0.0s
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+
+    <!-- Human Vehicle (HV) Type -->
+    <vType id="hv" vClass="custom1" 
+           length="5.0" 
+           width="1.8" 
+           minGap="2.5" 
+           maxSpeed="33.33" 
+           speedFactor="1.0" 
+           speedDev="0.1"
+           accel="2.6" 
+           decel="4.5" 
+           sigma="0.5"
+           tau="1.21"
+           lcStrategic="1.0"
+           lcCooperative="1.0"
+           lcSpeedGain="1.0"
+           lcKeepRight="0.0"
+           lcAssertive="1.0"
+           lcPushy="0.0"
+           lcPushyGap="0.6"
+           lcImpatience="0.0"
+           lcTimeToImpatience="infinity"
+           lcAccelLat="1.0"
+           />
+
+    <!-- Connected Autonomous Vehicle (CAV) Type -->
+    <vType id="cav" vClass="custom2" 
+           length="5.0" 
+           width="1.8" 
+           minGap="2.0" 
+           maxSpeed="33.33" 
+           speedFactor="1.0" 
+           speedDev="0.05"
+           accel="3.0" 
+           decel="4.5" 
+           sigma="0.0"
+           tau="0.5"
+           lcStrategic="1.0"
+           lcCooperative="1.0"
+           lcSpeedGain="1.0"
+           lcKeepRight="0.0"
+           lcAssertive="1.0"
+           lcPushy="0.0"
+           lcPushyGap="0.6"
+           lcImpatience="0.0"
+           lcTimeToImpatience="infinity"
+           lcAccelLat="1.5"
+           />
+
+    <!-- Vehicle Type Distribution: 2/3 HV, 1/3 CAV -->
+    <vTypeDistribution id="mixedTraffic">
+        <vType id="hv" probability="0.667"/>
+        <vType id="cav" probability="0.333"/>
+    </vTypeDistribution>
+
+</additional>
