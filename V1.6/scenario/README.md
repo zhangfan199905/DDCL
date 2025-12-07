@@ -57,14 +57,17 @@ This directory contains all SUMO (Simulation of Urban Mobility) configuration fi
 ## Network Structure
 
 ```
-Edge Layout (Total: 4000m):
+Edge Layout (Total: ~3984m):
 ┌────────────────────────────────────────────────────────────────┐
 │  Upstream  │        Control Area (10 segments)        │ Btlnk │ Down │
-│   1000m    │              2000m (200m each)            │ 300m  │ 700m │
+│   1000m    │              1996m (9×200m + 196m)        │ 292m  │ 696m │
 ├────────────┼──────────────────────────────────────────┼───────┼──────┤
 │  Edge 1    │ Edges 2-11 (Dynamic Control Zone)        │Edge 12│Edge13│
 │  3 lanes   │ 3 lanes (Lane 0 = controllable)          │2 lanes│3 lanes│
 └────────────┴──────────────────────────────────────────┴───────┴──────┘
+
+Note: Edge 11 is 196m (slightly shorter) to accommodate total network length.
+      Bottleneck (Edge 12) is 292m and downstream (Edge 13) is 696m.
 
 Lane Assignment:
   Lane 2 (Left):   [═════ Regular Mixed Traffic ═════]

@@ -12,11 +12,11 @@ This project implements a Dynamic CAV (Connected Autonomous Vehicle) Dedicated L
 
 ### Scenario Description
 
-**Highway Layout (4000m total):**
+**Highway Layout (~3984m total):**
 - **Upstream Area** (1000m): Edge 1 - Normal 3-lane traffic
-- **Control Area** (2000m): Edges 2-11 - Dynamic dedicated lane management zone (10 segments × 200m)
-- **Bottleneck Area** (300m): Edge 12 - Lane drop from 3 to 2 lanes  
-- **Downstream Area** (700m): Edge 13 - 3-lane recovery zone
+- **Control Area** (1996m): Edges 2-11 - Dynamic dedicated lane management zone (9×200m + 196m)
+- **Bottleneck Area** (292m): Edge 12 - Lane drop from 3 to 2 lanes  
+- **Downstream Area** (696m): Edge 13 - 3-lane recovery zone
 
 **Lane Configuration:**
 - Lane 0 (Rightmost): Controllable dedicated lane (can be CDL/HML/RML)

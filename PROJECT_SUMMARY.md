@@ -127,9 +127,9 @@ chmod +x setup.sh
 |-----------------|-----------|-------------------|
 | 总时长 / Duration | 2100秒 | 35分钟 |
 | 时间步长 / Time Step | 0.1秒 | 100毫秒分辨率 |
-| 路网长度 / Network Length | 4000米 | 约4公里高速 |
-| 控制区长度 / Control Area | 2000米 | 10个路段 |
-| 路段长度 / Segment Length | 200米 | SCL单元 |
+| 路网长度 / Network Length | 约3984米 | 约4公里高速 |
+| 控制区长度 / Control Area | 1996米 | 10个路段（9×200m+196m） |
+| 路段长度 / Segment Length | 200米 | SCL单元（边11为196米） |
 | 车道数 / Lanes | 2-3条 | 瓶颈区2车道 |
 | 设计速度 / Design Speed | 120 km/h | 33.33 m/s |
 | 车辆总数 / Total Vehicles | ~1500辆 | 1000 HV + 500 CAV |
