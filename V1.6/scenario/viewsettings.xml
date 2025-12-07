@@ -1,4 +1,0 @@
-<viewsettings>
-  <scheme name="real world" show-signs="true" show-lanes="true" show-edges="true" show-junctions="true" show-virtual-lanes="true" show-pedestrian="true" show-traci="true"/>
-  <scheme name="simple shapes" show-signs="false" show-lanes="false" show-edges="false" show-junctions="false" show-virtual-lanes="false" show-pedestrian="false" show-traci="false"/>
-</viewsettings>
