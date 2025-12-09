@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="net.net.xml"/>
+        <route-files value="rou.rou.xml"/>
+        <additional-files value="vTypeDistributions.add.xml,det.add.xml"/>
+    </input>
+
+    <!--<simulation>
+        <random-seed value="9497"/>
+    </simulation>-->
+
+    <step-length value="0.1" />
+
+    <lanechange-output.xy value="true"/>
+
+    <gui_only>
+        <gui-settings-file value="viewsettings.xml"/>
+    </gui_only>
+
+    <fcd-output value= "fcdTrajectories.xml" />
+    <fcd-output.acceleration value="true"/>
+    <device.fcd.period value="1.0"/>
+    <collision.mingap-factor value="1"/>
+
+    <time>
+        <begin value="0"/>
+        <end value="2100"/>
+    </time>
+
+    <processing>
+        <collision.action value="none"/>
+        <collision.stoptime value="1000"/>
+    </processing>
+
+    <report>
+        <xml-validation value="never"/>
+    </report>
+
+</configuration>
