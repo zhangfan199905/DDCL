@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- SUMO GUI View Settings for DDCL Simulation -->
+
+<viewsettings>
+    <scheme name="standard">
+        <opengl antialias="1" dither="1"/>
+    </scheme>
+    
+    <delay value="100"/>
+    <viewport y="0" x="2000" zoom="100"/>
+    
+    <scheme>
+        <vehicles vehicleMode="0" vehicleQuality="2" minVehicleSize="1" vehicleExaggeration="1.0"
+                  showBlinker="1" drawMinGap="0" drawBrakeGap="0" showBTRange="0" showRouteIndex="0"
+                  scaleLength="1" drawLaneChangePreference="0" drawElecHybrid="0"/>
+        <junctions junctionMode="0" drawLinkTLIndex="0" drawLinkJunctionIndex="0" 
+                   junctionName="0" internalJunctionName="0" tlsPhaseIndex="0" 
+                   junctionSize="1.0" junctionIDSize="0" internalEdgeSize="0.5"/>
+        <additionals addMode="0" addSize="1.0" addName="0" poiSize="0" poiDetail="0" 
+                     poiName="0" poiType="0"/>
+        <pois poiDetail="0"/>
+        <legend showSizeLegend="1"/>
+        <decals/>
+        <opengl antialias="1" dither="1"/>
+        <background backgroundColor="255,255,255" 
+                   showGrid="0" gridXSize="100.00" gridYSize="100.00"/>
+    </scheme>
+</viewsettings>
